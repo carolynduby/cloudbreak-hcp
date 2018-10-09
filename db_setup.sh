@@ -1,13 +1,18 @@
 #!/bin/bash
 
 # Setup the metron rest database 
+
+wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+rpm -ivh mysql80-community-release-el7-1.noarch.rpm
+yum-config-manager --disable mysql80-community
+yum-config-manager --enable mysql56-community
+
 yum install -y mysql-server 
 service mysqld start
 
 cat <<-EOF | mysql -u root
 CREATE DATABASE IF NOT EXISTS metron;
 GRANT ALL PRIVILEGES ON metron.* TO 'metron'@'%' identified by 'metron';
-GRANT ALL PRIVILEGES ON metron.* TO 'metron'@'localhost' identified by 'metron';
 
 use metron;
 
