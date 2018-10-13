@@ -335,6 +335,9 @@
                 },
                 {
                     "name": "DRPC_SERVER"
+                },
+                {
+                    "name": "TEZ_CLIENT"
                 }
             ],
             "configurations": []
